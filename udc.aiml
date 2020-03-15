@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    
+   <category>
+<pattern>Buna</pattern>
+<template>
+<random>
+<li>Buna!<br></br>Ai dori sa raspunzi la un sondaj despre cinema?</li>
+<li>Salut!<br></br>Ai dori sa raspunzi la un sondaj despre cinema?</li>
+<li>Hei! <br></br>Ai dori sa raspunzi la un sondaj despre cinema?</li>
+</random>
+<think><set name="topic">sondaj</set></think>
+</template>
+</category>
+
+
+<category>
+<pattern>Salut</pattern>
+<template><srai>Buna</srai></template>
+</category>
+
+<category>
+<pattern>Buna *</pattern>
+<template><srai>Buna</srai></template>
+</category>
+
+
+<topic name="sondaj">
+    
+    <category>
+<pattern>Da</pattern>
+<that>AI DORI SA RASPUNZI LA UN SONDAJ DESPRE CINEMA</that>
+<template>De cate ori mergi la film pe luna?</template>
+</category>
+
+
+<category>
+    <that>AI DORI SA RASPUNZI LA UN SONDAJ DESPRE CINEMA</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+  <category>
+<pattern>*</pattern>
+<that>De cate ori mergi la film pe luna</that>
+<template>
+ Ce tip de film preferi?
+</template>
+</category>
+
+
+
+ <category>
+<pattern>*</pattern>
+<that>Ce tip de film preferi</that>
+<template>
+ Ce varsta ai?
+</template>
+</category>
+
+
+
+<category>
+<pattern>*</pattern>
+<that>Ce varsta ai</that>
+<template>
+Ai recomanda serviciile noaste si altor persoane?
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>Ai recomanda serviciile noaste si altor persoane</that>
+<template>Atunci cand vizionati un film, achizitionati si mancare de la standul nostru?<br></br>Daca da, ce produse cumparati de obicei?
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>DACA DA, CE PRODUSE CUMPARATI DE OBICEI</that>
+<template>Doriti sa cumparati bilete la film?<think><set name="topic">bilete</set></think></template>
+</category>
+
+  <category>
+<pattern>Nu</pattern>
+<that> AI DORI SA RASPUNZI LA UN SONDAJ DESPRE CINEMA</that>
+<template>Doriti sa cumparati bilete la film?<think><set name="topic">bilete</set></think></template>
+</category>   
+
+
+
+
+
+</topic>
+ 
+ <topic name="Bilete">
+     
+     <category>
+<pattern>Nu</pattern>
+<that>Doriti sa cumparati bilete la film</that>
+<template>Doriti sa comandati ceva de mancare?<think><set name="topic">mancare</set></think></template>
+</category> 
+ 
+ 
+ 
+ <category>
+<pattern>Da</pattern>
+<that>Doriti sa cumparati bilete la film</that>
+<template>
+ Ce film doriti sa vizionati?
+</template>
+</category>
+
+<category>
+    <that>Doriti sa cumparati bilete la film</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+ <category>
+<pattern>*</pattern>
+<that>Ce film doriti sa vizionati</that>
+<template><think><set name="film"><star></star></set></think>
+ Cate locuri doriti?
+</template>
+</category>
+
+
+<category>
+<pattern>*</pattern>
+<that>Cate locuri doriti</that>
+<template><think><set name="nrlocuri"><star></star></set></think><image>http://rogeek.com/wp-content/uploads/2017/12/cel-mai-bun-loc-cinema-city.jpg</image>
+ Alegeti <get name="nrlocuri"/> locuri. Scrieti mai jos randul si numerele acestora
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>Scrieti mai jos randul si numerele acestora</that>
+<template><think><set name="locuri"><star></star></set></think>Ati achizitionat locurile:  <get name="locuri"/> <br></br> La filmul :<get name="film"/>
+<br></br><br></br>Doriti comandati ceva de macare?<think><set name="topic">mancare</set></think></template>
+</category>
+
+
+
+</topic>
+
+
+
+<topic name="mancare">
+    
+    <category>
+<pattern>Nu</pattern>
+<that>Ati achizitionat locurile  * La filmul *
+Doriti comandati ceva de macare</that>
+<template>multumim!! Va uram o zi frumoasa!<think><set name="topic">nimic</set></think></template>
+</category>
+    
+    <category>
+<pattern>Da</pattern>
+<that>Ati achizitionat locurile  * La filmul *
+Doriti comandati ceva de macare</that>
+<template>Cu ce va seversc?<br></br>Popcorn sau nachos?</template>
+</category>
+    
+     <category>
+<pattern>Nu</pattern>
+<that> DORITI SA COMANDATI CEVA DE MANCARE</that>
+<template>multumim!! Va uram o zi frumoasa!<think><set name="topic">nimic</set></think></template>
+</category>
+
+ <category>
+<pattern>Da</pattern>
+<that> DORITI SA COMANDATI CEVA DE MANCARE</that>
+<template>Cu ce va seversc?<br></br>Popcorn sau nachos?</template>
+</category>
+
+
+<category>
+    <that> DORITI SA COMANDATI CEVA DE MANCARE</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+
+<category>
+    <that>Ati achizitionat locurile  * La filmul *
+Doriti comandati ceva de macare</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+
+<category>
+    <that>Popcorn sau nachos</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+
+<category>
+<pattern>_ nachos</pattern>
+<that>Popcorn sau nachos</that>
+<template>Doriti la meniu cu suc?</template>
+</category>   
+
+     <category>
+<pattern>nachos _</pattern>
+<that>Popcorn sau nachos</that>
+<template>Doriti la meniu cu suc?</template>
+</category> 
+
+ <category>
+<pattern>Da</pattern>
+<that>Doriti la meniu cu suc</that>
+<template>Ce suc doriti?<br></br>Pepsi,Sprite sau Fanta?</template>
+</category> 
+
+<category>
+    <that>Doriti la meniu cu suc</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+<category>
+<pattern>_ Pepsi</pattern>
+<that>Pepsi,Sprite sau Fanta</that>
+<template>Totalul este de 16 lei</template>
+</category> 
+
+<category>
+<pattern>Pepsi _</pattern>
+<that>Pepsi,Sprite sau Fanta</that>
+<template>Totalul este de 16 lei</template>
+</category> 
+
+
+
+<category>
+<pattern>_ Fanta</pattern>
+<that>Pepsi,Sprite sau Fanta</that>
+<template>Totalul este de 16 lei</template>
+</category> 
+
+
+
+<category>
+<pattern>Fanta _</pattern>
+<that>Pepsi,Sprite sau Fanta</that>
+<template>Totalul este de 16 lei</template>
+</category> 
+
+
+<category>
+<pattern>Sprite _</pattern>
+<that>Pepsi,Sprite sau Fanta</that>
+<template>Totalul este de 16 lei</template>
+</category> 
+
+
+<category>
+<pattern>_ Sprite</pattern>
+<that>Pepsi,Sprite sau Fanta</that>
+<template>Totalul este de 16 lei</template>
+</category> 
+
+<category>
+    <that>Pepsi,Sprite sau Fanta</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+
+ <category>
+<pattern>Nu</pattern>
+<that>Doriti la meniu cu suc</that>
+<template>Acesta costa 13 lei</template>
+</category> 
+
+
+    
+    
+
+ <category>
+<pattern>_ popcorn</pattern>
+<that>Popcorn sau nachos</that>
+<template>La meniu?</template>
+</category>   
+
+     <category>
+<pattern>popcorn _</pattern>
+<that>Popcorn sau nachos</that>
+<template>La meniu?</template>
+</category> 
+
+    <category>
+<pattern>popcorn</pattern>
+<that>Popcorn sau nachos</that>
+<template>La meniu?</template>
+</category> 
+
+
+     <category>
+<pattern>Da</pattern>
+<that>La meniu</that>
+<template>mic, mediu sau mare?</template>
+</category> 
+
+
+ <category>
+<pattern>Nu</pattern>
+<that>La meniu</that>
+<template>Popcorn mic, mediu sau mare?</template>
+</category> 
+
+<category>
+    <that>La meniu</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+<category>
+<pattern>_ Mic</pattern>
+<that>Popcorn mic, mediu sau mare</that>
+<template>Acesta costa 8 lei</template></category> 
+
+<category>
+<pattern>Mic _</pattern>
+<that>Popcorn mic, mediu sau mare</that>
+<template>Acesta costa 8 lei</template>
+</category> 
+
+<category>
+<pattern>_ Mediu</pattern>
+<that>Popcorn mic, mediu sau mare</that>
+<template>Acesta costa 9 lei</template></category> 
+
+<category>
+<pattern>Mediu _</pattern>
+<that>Popcorn mic, mediu sau mare</that>
+<template>Acesta costa 9 lei</template></category> 
+
+<category>
+<pattern>_ Mare</pattern>
+<that>Popcorn mic, mediu sau mare</that>
+<template>Acesta costa 10 lei</template></category> 
+
+<category>
+<pattern>Mare _</pattern>
+<that>Popcorn mic, mediu sau mare</that>
+<template>Acesta costa 10 lei</template></category> 
+
+<category>
+    <that>Popcorn mic, mediu sau mare</that>
+<pattern>*</pattern>
+<template><response index="1" /></template>
+</category>
+
+
+    <category>
+<pattern>* Mic</pattern>
+<that>MIC, MEDIU SAU MARE</that>
+<template><think><set name="total">13</set></think>Ce suc doriti la meniu?<br></br>Pepsi,Fanta sau Sprite?</template>
+</category> 
+
+
+ <category>
+<pattern>Mic *</pattern>
+<that>MIC, MEDIU SAU MARE</that>
+
+<template><think><set name="total">13</set></think>Ce suc doriti la meniu?<br></br>Pepsi,Fanta sau Sprite?</template>
+</category> 
+
+
+  <category>
+<pattern>* Mediu</pattern>
+<that>MIC, MEDIU SAU MARE</that>
+<template><think><set name="total">15</set></think>Ce suc doriti la meniu?<br></br>Pepsi,Fanta sau Sprite?</template>
+</category> 
+
+
+ <category>
+<pattern>Mediu *</pattern>
+<that>MIC, MEDIU SAU MARE</that>
+<template><think><set name="total">15</set></think>Ce suc doriti la meniu?<br></br>Pepsi,Fanta sau Sprite?</template>
+</category> 
+
+
+ <category>
+<pattern>* Mare</pattern>
+<that>MIC, MEDIU SAU MARE</that>
+<template><think><set name="total">18</set></think>Ce suc doriti la meniu?<br></br>Pepsi,Fanta sau Sprite?</template>
+</category> 
+
+ <category>
+<pattern>Mare *</pattern>
+<that>MIC, MEDIU SAU MARE</that>
+<template><think><set name="total">18</set></think>Ce suc doriti la meniu?<br></br>Pepsi,Fanta sau Sprite?</template>
+</category> 
+
+
+
+<category>
+<pattern>_ Pepsi</pattern>
+<that>Pepsi,Fanta sau Sprite</that>
+<template>Totalul este de <get name="total"/> lei<br></br>Vizionare placuta!</template>
+</category> 
+
+<category>
+<pattern>Pepsi _</pattern>
+<that>Pepsi,Fanta sau Sprite</that>
+<template>Totalul este de <get name="total"/> lei<br></br>Vizionare placuta!</template>
+</category> 
+
+
+
+<category>
+<pattern>_ Fanta</pattern>
+<that>Pepsi,Fanta sau Sprite</that>
+<template>Totalul este de <get name="total"/> lei<br></br>Vizionare placuta!</template>
+</category> 
+
+
+
+<category>
+<pattern>Fanta _</pattern>
+<that>Pepsi,Fanta sau Sprite</that>
+<template>Totalul este de <get name="total"/> lei<br></br>Vizionare placuta!</template>
+</category> 
+
+
+<category>
+<pattern>Sprite _</pattern>
+<that>Pepsi,Fanta sau Sprite</that>
+<template>Totalul este de <get name="total"/> lei<br></br>Vizionare placuta!</template>
+</category> 
+
+
+<category>
+<pattern>_ Sprite</pattern>
+<that>Pepsi,Fanta sau Sprite</that>
+<template>Totalul este de <get name="total"/> lei<br></br>Vizionare placuta!</template>
+</category> 
+
+
+
+
+
+</topic>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</aiml>
